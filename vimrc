@@ -1,0 +1,123 @@
+set nocompatible              " required
+filetype off                  " required
+
+:let mapleader = ","
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'jnurmine/Zenburn'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+"Plugin 'kien/ctrlp.vim'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'w0rp/ale'
+Plugin 'heavenshell/vim-pydocstring'
+Plugin 'fisadev/vim-isort'
+
+Plugin 'benmills/vimux'
+Plugin 'janko-m/vim-test'
+
+" add all your plugins here (note older versions of Vundle
+" used Bundle instead of Plugin)
+
+" ...
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
+" Enable folding with the spacebar
+nnoremap <space> za
+
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ shiftwidth=4
+    \ textwidth=79
+    \ expandtab
+    \ autoindent
+    \ fileformat=unix
+
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
+
+set encoding=utf-8
+
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+"python with virtualenv support
+
+let python_highlight_all=1
+syntax on
+
+
+set background=light
+colorscheme zenburn
+
+"NerdTree
+autocmd vimenter * NERDTree
+nmap <leader>nt :NERDTreeToggle<cr>
+
+let g:nerdtree_tabs_open_on_console_startup = 1
+
+
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
+set nu
+
+set clipboard=unnamed
+
+set mouse=a
+
+let g:ale_linters = {'python': ['pylint']}
+let g:ale_fixers = {'python': ['isort','black']}
+
+let g:ale_linters = {'cpp': ['clang']}
+let g:ale_fixers = {'cpp': ['clang-format']}
+
+let g:ale_linters = {'c': ['clang']}
+let g:ale_fixers = {'c': ['clang-format']}
+
+
+let test#strategy = "vimux"
+  
+
+" Shortcuts
+"  
+inoremap jk <Esc>
+
+" Toogle NerdTree
+map <C-n> :NERDTreeToggle<CR>
+
+" Disable Arrow keys in Escape mode
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+" Disable Arrow keys in Insert mode
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
+" Disable Ex mode
+map Q <Nop>

@@ -1,0 +1,15 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/dotfiles: ''
+    ~/.vimrc: vimrc
+    ~/.zshrc: zshrc 
+    ~/.fzf.zsh: fzf.zsh
+    ~/.antigen.zsh: antigen.zsh
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
