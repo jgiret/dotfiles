@@ -1,12 +1,10 @@
 source ~/.antigen.zsh
 
 # Load the oh-my-zsh's library.
+plugins=(git extract docker python pip)
 antigen use oh-my-zsh
 
-antigen bundle git
 antigen bundle colored-man-pages
-antigen bundle pip
-antigen bundle python
 antigen bundle autojump
 antigen bundle dirpersist
 antigen bundle common-aliases
