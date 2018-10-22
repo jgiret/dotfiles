@@ -69,15 +69,8 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let python_highlight_all=1
 syntax on
 
-
 set background=light
 colorscheme zenburn
-
-"NerdTree
-autocmd vimenter * NERDTree
-nmap <leader>nt :NERDTreeToggle<cr>
-
-let g:nerdtree_tabs_open_on_console_startup = 1
 
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
@@ -96,7 +89,6 @@ let g:ale_fixers = {'cpp': ['clang-format']}
 
 let g:ale_linters = {'c': ['clang']}
 let g:ale_fixers = {'c': ['clang-format']}
-
 
 let test#strategy = "vimux"
   
