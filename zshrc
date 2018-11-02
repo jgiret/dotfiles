@@ -1,9 +1,13 @@
 source ~/.antigen.zsh
 
 # Load the oh-my-zsh's library.
-plugins=(git extract docker python pip)
 antigen use oh-my-zsh
 
+antigen bundle git
+antigen bundle extract 
+antigen bundle docker 
+antigen bundle python 
+antigen bundle pip 
 antigen bundle colored-man-pages
 antigen bundle autojump
 antigen bundle dirpersist
@@ -13,6 +17,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle "MichaelAquilina/zsh-you-should-use"
 
 # Load the theme.
 antigen theme agnoster
@@ -26,3 +31,5 @@ antigen apply
 export PATH="/home/jgiret/anaconda3/bin:$PATH"
 export PATH="/home/jgiret/bin:$PATH"
 bindkey '^ ' autosuggest-accept
+alias n='nvim'
+alias vim='nvim'
