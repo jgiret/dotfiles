@@ -118,3 +118,10 @@ imap <right> <nop>
 
 " Disable Ex mode
 map Q <Nop>
+
+nnoremap <leader>p :History<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>t :Files<CR>
+nnoremap <leader>c :Commits<CR>
+
+
