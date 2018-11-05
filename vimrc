@@ -5,6 +5,8 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+" add fzf in runtime path
+set rtp+=~/.fzf
 call vundle#begin()
 
 " alternatively, pass a path where Vundle should install plugins
@@ -27,7 +29,7 @@ Plugin 'heavenshell/vim-pydocstring'
 Plugin 'fisadev/vim-isort'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-
+Plugin 'junegunn/fzf.vim'
 Plugin 'benmills/vimux'
 Plugin 'janko-m/vim-test'
 
