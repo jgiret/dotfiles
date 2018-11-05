@@ -71,10 +71,12 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 let python_highlight_all=1
 syntax on
-
-set background=light
-colorscheme zenburn
-
+"colorscheme
+if has("termguicolors")
+  set termguicolors
+  endif
+colorscheme NeoSolarized
+set background=dark
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
