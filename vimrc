@@ -26,6 +26,9 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'w0rp/ale'
 
+" Autotag: automatically regenerate tags for a file when written.
+Plugin 'craigemery/vim-autotag'
+
 Plugin 'heavenshell/vim-pydocstring'
 Plugin 'fisadev/vim-isort'
 Plugin 'vim-airline/vim-airline'
