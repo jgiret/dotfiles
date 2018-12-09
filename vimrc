@@ -46,6 +46,8 @@ Plugin 'janko-m/vim-test'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+set hidden
+
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
