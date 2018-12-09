@@ -37,6 +37,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'benmills/vimux'
 Plugin 'janko-m/vim-test'
 
+Plugin 'airblade/vim-gitgutter'
 " add all your plugins here (note older versions of Vundle
 " used Bundle instead of Plugin)
 
