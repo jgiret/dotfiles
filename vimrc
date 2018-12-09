@@ -124,6 +124,7 @@ imap <right> <nop>
 map Q <Nop>
 
 nnoremap <leader>p :History<CR>
+nnoremap <leader>d :Tags<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>t :Files<CR>
 nnoremap <leader>c :Commits<CR>
