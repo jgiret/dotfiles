@@ -3,6 +3,10 @@ filetype off                  " required
 
 :let mapleader = ","
 
+let g:python_host_prog = 'python'
+let g:python3_host_prog = 'python'
+let g:powerline_pycmd = 'py3'
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 " add fzf in runtime path
@@ -17,7 +21,6 @@ Plugin 'icymind/NeoSolarized'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
-
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'jnurmine/Zenburn'
@@ -40,6 +43,7 @@ Plugin 'janko-m/vim-test'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
 " add all your plugins here (note older versions of Vundle
 " used Bundle instead of Plugin)
 
