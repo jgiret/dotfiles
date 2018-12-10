@@ -43,6 +43,7 @@ Plugin 'janko-m/vim-test'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
 " add all your plugins here (note older versions of Vundle
 " used Bundle instead of Plugin)
 
