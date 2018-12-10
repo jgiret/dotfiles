@@ -128,11 +128,12 @@ imap <right> <nop>
 " Disable Ex mode
 map Q <Nop>
 
-nnoremap <leader>p :History<CR>
+nnoremap <leader>h :History<CR>
 nnoremap <leader>d :Tags<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>t :Files<CR>
 nnoremap <leader>c :Commits<CR>
+nnoremap <leader>a :Commands<CR>
 
 
 " YCM
