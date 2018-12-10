@@ -3,8 +3,8 @@ filetype off                  " required
 
 :let mapleader = ","
 
-let g:python_host_prog = '/projects/labs_src/anaconda3/bin/python'
-let g:python3_host_prog = '/projects/labs_src/anaconda3/bin/python'
+let g:python_host_prog = 'python'
+let g:python3_host_prog = 'python'
 let g:powerline_pycmd = 'py3'
 
 " set the runtime path to include Vundle and initialize
