@@ -98,10 +98,11 @@ set background=dark
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
 set nu
-
 set clipboard=unnamed
-
 set mouse=a
+
+set undofile 
+set undodir=~/.vim/undodir
 
 let g:ale_linters = {'python': ['pylint']}
 let g:ale_fixers = {'python': ['isort','black']}
