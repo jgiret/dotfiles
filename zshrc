@@ -35,3 +35,6 @@ export PATH="/home/jgiret/bin:$PATH"
 bindkey '^ ' autosuggest-accept
 alias n='nvim'
 alias vim='nvim'
+
+
+[ -f ~/.zshrc_local.zsh ] && source ~/.zshrc_local.zsh
