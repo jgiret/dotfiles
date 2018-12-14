@@ -17,35 +17,61 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'icymind/NeoSolarized'
 Plugin 'gmarik/Vundle.vim'
+
+" Plugin to fold code blocks 
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
+
+" Forked version of YCM due to unicode issues in old systems
 Plugin 'jgiret/YouCompleteMe'
-Plugin 'vim-syntastic/syntastic'
+"Plugin 'vim-syntastic/syntastic'
+
+" Color themes
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'icymind/NeoSolarized'
+
+" NERDTree sideline bar
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
+
+" Ale: Asynchronous linting and fixing
 Plugin 'w0rp/ale'
 
 " Autotag: automatically regenerate tags for a file when written.
 Plugin 'craigemery/vim-autotag'
 
+" Highlight the yanked text
 Plugin 'machakann/vim-highlightedyank'
 
-Plugin 'heavenshell/vim-pydocstring'
+" Boilerplate for Python docstring
+Plugin 'jgiret/vim-pydocstring'
+let g:pydocstring_templates_dir = '~/.vim/bundle/vim-pydocstring/template/google'
+
+" Isort the module import
 Plugin 'fisadev/vim-isort'
+
+" Vim airline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+
+" The fantastic fuzzy search finder
 Plugin 'junegunn/fzf.vim'
+
+" Vim integration with tmux
 Plugin 'benmills/vimux'
 Plugin 'janko-m/vim-test'
 
+" Git plugins
+Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
+
+" Other Tim Pope's plugins
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
+
+" To easily grep in the working directory
 
 Plugin 'mhinz/vim-grepper'
 " add all your plugins here (note older versions of Vundle
@@ -57,6 +83,7 @@ Plugin 'mhinz/vim-grepper'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" Enable hidden buffers
 set hidden
 
 " Enable folding
@@ -84,10 +111,9 @@ set encoding=utf-8
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-"python with virtualenv support
-
 let python_highlight_all=1
 syntax on
+
 "colorscheme
 if has("termguicolors")
   set termguicolors
@@ -105,19 +131,11 @@ set undofile
 set undodir=~/.vim/undodir
 
 let g:ale_linters = {'python': ['pylint']}
-let g:ale_fixers = {'python': ['isort','black']}
-
-let g:ale_linters = {'cpp': ['clang']}
-let g:ale_fixers = {'cpp': ['clang-format']}
-
-let g:ale_linters = {'c': ['clang']}
-let g:ale_fixers = {'c': ['clang-format']}
+let g:ale_fixers = {'python': ['isort','autopep8']}
 
 let test#strategy = "vimux"
-  
 
-" Shortcuts
-"  
+" Escape sortcuts
 inoremap jk <Esc>
 
 " Toogle NerdTree
@@ -137,6 +155,7 @@ imap <right> <nop>
 " Disable Ex mode
 map Q <Nop>
 
+" FZF Shortcuts
 nnoremap <leader>h :History<CR>
 nnoremap <leader>d :Tags<CR>
 nnoremap <leader>b :Buffers<CR>
