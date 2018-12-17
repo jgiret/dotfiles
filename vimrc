@@ -1,4 +1,4 @@
-set nocompatible              " required
+set nocompatible              " required:j
 filetype off                  " required
 
 :let mapleader = ","
@@ -157,7 +157,6 @@ map Q <Nop>
 
 " FZF Shortcuts
 nnoremap <leader>h :History<CR>
-nnoremap <leader>d :Tags<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>t :Files<CR>
 nnoremap <leader>c :Commits<CR>
@@ -179,5 +178,4 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_confirm_extra_conf = 0
-
 
