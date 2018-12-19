@@ -19,9 +19,19 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+if !has('nvim')
+  Plug 'tpope/vim-sensible'
+endif
+
 " Plugin to fold code blocks 
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
+Plugin 'hdima/python-syntax'
+Plugin 'Vimjas/vim-python-pep8-indent'
+
+" snippets
+Plugin 'SirVer/ultisnips' | Plugin 'honza/vim-snippets'
+Plugin 'ervandew/supertab' 
 
 " Forked version of YCM due to unicode issues in old systems
 Plugin 'jgiret/YouCompleteMe'
@@ -69,6 +79,8 @@ Plugin 'airblade/vim-gitgutter'
 
 " Other Tim Pope's plugins
 Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
 
 " To easily grep in the working directory
@@ -86,12 +98,16 @@ filetype plugin indent on    " required
 " Enable hidden buffers
 set hidden
 
+" Source the vimrc file after saving it
+au bufwritepost .vimrc source $MYVIMRC
+
+" no automatic backup and no swapfile
+set nobackup
+set nowritebackup
+set noswapfile
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
-
-" Enable folding with the spacebar
-nnoremap <space> za
 
 au BufNewFile,BufRead *.py
     \ set tabstop=4
