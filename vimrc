@@ -28,14 +28,15 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'hdima/python-syntax'
 Plugin 'Vimjas/vim-python-pep8-indent'
+Plugin 'jeetsukumaran/vim-pythonsense'
 
 " snippets
-Plugin 'SirVer/ultisnips' | Plugin 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab' 
 
 " Forked version of YCM due to unicode issues in old systems
 Plugin 'jgiret/YouCompleteMe'
-"Plugin 'vim-syntastic/syntastic'
 
 " Color themes
 Plugin 'jnurmine/Zenburn'
@@ -74,17 +75,21 @@ Plugin 'benmills/vimux'
 Plugin 'janko-m/vim-test'
 
 " Git plugins
-Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
 " Other Tim Pope's plugins
+Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-endwise'
+
+Plugin 'rstacruz/vim-closer'
+" Indentation line, quite useful in Python
+Plugin 'Yggdroot/indentLine'
 
 " To easily grep in the working directory
-
 Plugin 'mhinz/vim-grepper'
 " add all your plugins here (note older versions of Vundle
 " used Bundle instead of Plugin)
@@ -146,8 +151,9 @@ set mouse=a
 set undofile 
 set undodir=~/.vim/undodir
 
-let g:ale_linters = {'python': ['pylint']}
-let g:ale_fixers = {'python': ['isort','autopep8']}
+let g:ale_linters = {'python': ['pycodestyle','pydocstyle','pyflakes','pylint']}
+let g:ale_fixers = {'python': ['trim_whitespace','remove_trailing_lines','isort']}
+nnoremap <leader>f :ALEFix<CR>
 
 let test#strategy = "vimux"
 
@@ -195,3 +201,12 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_confirm_extra_conf = 0
 
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<CR>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
