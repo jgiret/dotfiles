@@ -14,6 +14,7 @@ antigen bundle colored-man-pages
 antigen bundle autojump
 antigen bundle dirpersist
 antigen bundle common-aliases
+antigen bundle vi-mode 
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
@@ -26,6 +27,9 @@ antigen theme agnoster
 
 # Tell Antigen that you're done.
 antigen apply
+
+bindkey -v
+bindkey 'jk' vi-cmd-mode
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
