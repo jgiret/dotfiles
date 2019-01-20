@@ -40,5 +40,6 @@ bindkey '^ ' autosuggest-accept
 alias n='nvim'
 alias vim='nvim'
 
+export EDITOR='nvim'
 
 [ -f ~/.zshrc_local.zsh ] && source ~/.zshrc_local.zsh
