@@ -289,6 +289,8 @@ bind-key -n MouseDown2Pane run "tmux set-buffer \"$(xclip -o -sel clipboard)\"; 
 set -g status-keys vi
 set -g mode-keys vi
 
+set -g mouse on
+
 # replace C-b by C-a instead of using both prefixes
 # set -gu prefix2
 # unbind C-a
