@@ -35,6 +35,31 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab' 
 
+"Tags
+Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'skywind3000/gutentags_plus'
+
+"Motion
+"Plugin 'yuttie/comfortable-motion.vim'
+"let g:comfortable_motion_scroll_down_key = "j"
+"let g:comfortable_motion_scroll_up_key = "k"
+
+"
+"Latex
+Plugin 'lervag/vimtex'
+Plugin 'PietroPate/vim-tex-conceal'
+
+set concealcursor=""
+let g:tex_flavor='pdflatex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=1
+set conceallevel=2
+let g:tex_conceal='abdmgs'
+
+"C++
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
 " Forked version of YCM due to unicode issues in old systems
 Plugin 'jgiret/YouCompleteMe'
 
@@ -94,6 +119,9 @@ Plugin 'mhinz/vim-grepper'
 " add all your plugins here (note older versions of Vundle
 " used Bundle instead of Plugin)
 
+" PlantUML support
+Plugin 'aklt/plantuml-syntax'
+Plugin 'scrooloose/vim-slumlord'
 " ...
 
 " All of your Plugins must be added before the following line
@@ -200,6 +228,12 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_confirm_extra_conf = 0
+
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
+
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
