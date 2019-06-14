@@ -3,8 +3,6 @@ filetype off                  " required
 
 :let mapleader = ","
 
-let g:python_host_prog = 'python'
-let g:python3_host_prog = 'python'
 let g:powerline_pycmd = 'py3'
 
 " set the runtime path to include Vundle and initialize
@@ -23,17 +21,21 @@ if !has('nvim')
   Plug 'tpope/vim-sensible'
 endif
 
-" Plugin to fold code blocks 
+" Plugin to fold code blocks
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'hdima/python-syntax'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'jeetsukumaran/vim-pythonsense'
 
+" C++
+
+Plugin 'vim-scripts/a.vim'
+
 " snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'ervandew/supertab' 
+Plugin 'ervandew/supertab'
 
 "Tags
 Plugin 'ludovicchabant/vim-gutentags'
@@ -63,6 +65,17 @@ Plugin 'plasticboy/vim-markdown'
 " Forked version of YCM due to unicode issues in old systems
 Plugin 'jgiret/YouCompleteMe'
 
+" RST/Sphink
+"
+Plugin 'Rykka/riv.vim'
+let gems = { 'path': '/mnt/M/homes/jc.giret/workspace/gems/doc_src/sphinx/source', }
+let g:riv_projects = [gems]
+
+" Whitespaces handling
+Plugin 'ntpeters/vim-better-whitespace'
+let g:better_whitespace_enabled=1
+" let g:strip_whitespace_on_save=1
+
 " Color themes
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
@@ -84,6 +97,9 @@ Plugin 'machakann/vim-highlightedyank'
 " Boilerplate for Python docstring
 Plugin 'jgiret/vim-pydocstring'
 let g:pydocstring_templates_dir = '~/.vim/bundle/vim-pydocstring/template/google'
+
+" Autopep8 Plugin
+Plugin 'tell-k/vim-autopep8'
 
 " Isort the module import
 Plugin 'fisadev/vim-isort'
@@ -235,12 +251,18 @@ endif
 let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
 
-" make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<C-tab>"
+let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+
+" Return to last edit position when opening files (You want this!)
+ autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
