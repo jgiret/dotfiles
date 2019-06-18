@@ -18,8 +18,11 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 if !has('nvim')
-  Plug 'tpope/vim-sensible'
+  Plugin 'tpope/vim-sensible'
 endif
+
+" Commentary
+Plugin 'tpope/vim-commentary'
 
 " Plugin to fold code blocks
 Plugin 'tmhedberg/SimpylFold'
@@ -29,7 +32,6 @@ Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'jeetsukumaran/vim-pythonsense'
 
 " C++
-
 Plugin 'vim-scripts/a.vim'
 
 " snippets
@@ -41,12 +43,16 @@ Plugin 'ervandew/supertab'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'skywind3000/gutentags_plus'
 
+"Undo
+Plugin 'mbbill/undotree'
+nnoremap <F1> :UndotreeToggle<cr>
+
 "Motion
 "Plugin 'yuttie/comfortable-motion.vim'
 "let g:comfortable_motion_scroll_down_key = "j"
 "let g:comfortable_motion_scroll_up_key = "k"
+Plugin 'justinmk/vim-sneak'
 
-"
 "Latex
 Plugin 'lervag/vimtex'
 Plugin 'PietroPate/vim-tex-conceal'
