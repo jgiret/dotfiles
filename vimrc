@@ -1,61 +1,64 @@
-set nocompatible              " required:j
+set nocompatible              " required
 filetype off                  " required
 
 :let mapleader = ","
 
-let g:powerline_pycmd = 'py3'
+let g:powerline_pycmd = 'python3'
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.local/share/nvim/site/autoload/plug.vim
 " add fzf in runtime path
 set rtp+=~/.fzf
-call vundle#begin()
-
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+call plug#begin('~/.local/share/nvim/plugged')
 
 if !has('nvim')
-  Plugin 'tpope/vim-sensible'
+  Plug 'tpope/vim-sensible'
 endif
 
-" Commentary
-Plugin 'tpope/vim-commentary'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
 
-" Plugin to fold code blocks
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'hdima/python-syntax'
-Plugin 'Vimjas/vim-python-pep8-indent'
-Plugin 'jeetsukumaran/vim-pythonsense'
+Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'tpope/vim-commentary'
+Plug 'jiangmiao/auto-pairs'
 
-" C++
-Plugin 'vim-scripts/a.vim'
+let g:AutoPairsFlyMode = 1
+let g:AutoPairsShortcutBackInsert = '<M-b>'
+
+" Plug to fold code blocks
+Plug 'tmhedberg/SimpylFold'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'hdima/python-syntax'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'jeetsukumaran/vim-pythonsense'
 
 " snippets
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'ervandew/supertab'
+" Plug 'SirVer/ultisnips'
+ " Plug 'honza/vim-snippets'
+" let g:neosnippet#snippets_directory="~/.local/share/nvim/plugged/vim-snippets/snippets"
 
 "Tags
-Plugin 'ludovicchabant/vim-gutentags'
-Plugin 'skywind3000/gutentags_plus'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'skywind3000/gutentags_plus'
 
 "Undo
-Plugin 'mbbill/undotree'
+Plug 'mbbill/undotree'
 nnoremap <F1> :UndotreeToggle<cr>
 
 "Motion
-"Plugin 'yuttie/comfortable-motion.vim'
-"let g:comfortable_motion_scroll_down_key = "j"
-"let g:comfortable_motion_scroll_up_key = "k"
-Plugin 'justinmk/vim-sneak'
+Plug 'justinmk/vim-sneak'
 
 "Latex
-Plugin 'lervag/vimtex'
-Plugin 'PietroPate/vim-tex-conceal'
+Plug 'lervag/vimtex'
+Plug 'PietroPate/vim-tex-conceal'
 
 set concealcursor=""
 let g:tex_flavor='pdflatex'
@@ -64,90 +67,86 @@ let g:vimtex_quickfix_mode=1
 set conceallevel=2
 let g:tex_conceal='abdmgs'
 
-"C++
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-
-" Forked version of YCM due to unicode issues in old systems
-Plugin 'jgiret/YouCompleteMe'
+" Markdown
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 " RST/Sphink
 "
-Plugin 'Rykka/riv.vim'
+Plug 'Rykka/riv.vim'
 let gems = { 'path': '/mnt/M/homes/jc.giret/workspace/gems/doc_src/sphinx/source', }
 let g:riv_projects = [gems]
 
 " Whitespaces handling
-Plugin 'ntpeters/vim-better-whitespace'
+Plug 'ntpeters/vim-better-whitespace'
 let g:better_whitespace_enabled=1
 " let g:strip_whitespace_on_save=1
-
 " Color themes
-Plugin 'jnurmine/Zenburn'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'icymind/NeoSolarized'
+
+Plug 'jnurmine/Zenburn'
+Plug 'altercation/vim-colors-solarized'
+Plug 'icymind/NeoSolarized'
 
 " NERDTree sideline bar
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
 
 " Ale: Asynchronous linting and fixing
-Plugin 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 " Autotag: automatically regenerate tags for a file when written.
-Plugin 'craigemery/vim-autotag'
+Plug 'craigemery/vim-autotag'
 
 " Highlight the yanked text
-Plugin 'machakann/vim-highlightedyank'
+Plug 'machakann/vim-highlightedyank'
 
 " Boilerplate for Python docstring
-Plugin 'jgiret/vim-pydocstring'
-let g:pydocstring_templates_dir = '~/.vim/bundle/vim-pydocstring/template/google'
+Plug 'jgiret/vim-pydocstring'
+" let g:pydocstring_templates_dir = '~/.vim/bundle/vim-pydocstring/template/google'
 
 " Autopep8 Plugin
-Plugin 'tell-k/vim-autopep8'
+Plug 'tell-k/vim-autopep8'
 
 " Isort the module import
-Plugin 'fisadev/vim-isort'
+Plug 'fisadev/vim-isort'
 
 " Vim airline
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " The fantastic fuzzy search finder
-Plugin 'junegunn/fzf.vim'
+Plug 'junegunn/fzf.vim'
 
 " Vim integration with tmux
-Plugin 'benmills/vimux'
-Plugin 'janko-m/vim-test'
+Plug 'benmills/vimux'
+Plug 'janko-m/vim-test'
 
 " Git plugins
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
 " Other Tim Pope's plugins
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-endwise'
 
-Plugin 'rstacruz/vim-closer'
+Plug 'rstacruz/vim-closer'
+
 " Indentation line, quite useful in Python
-Plugin 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 
 " To easily grep in the working directory
-Plugin 'mhinz/vim-grepper'
-" add all your plugins here (note older versions of Vundle
-" used Bundle instead of Plugin)
+Plug 'mhinz/vim-grepper'
 
 " PlantUML support
-Plugin 'aklt/plantuml-syntax'
-Plugin 'scrooloose/vim-slumlord'
+Plug 'aklt/plantuml-syntax'
+Plug 'scrooloose/vim-slumlord'
 " ...
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+call plug#end()            " required
 filetype plugin indent on    " required
 
 " Enable hidden buffers
@@ -160,6 +159,7 @@ au bufwritepost .vimrc source $MYVIMRC
 set nobackup
 set nowritebackup
 set noswapfile
+
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
@@ -198,12 +198,14 @@ set nu
 set clipboard=unnamed
 set mouse=a
 
-set undofile 
+set undofile
 set undodir=~/.vim/undodir
 
 let g:ale_linters = {'python': ['pycodestyle','pydocstyle','pyflakes','pylint']}
-let g:ale_fixers = {'python': ['trim_whitespace','remove_trailing_lines','isort']}
+let g:ale_fixers = {'python': ['yapf', 'trim_whitespace','remove_trailing_lines','isort']}
 nnoremap <leader>f :ALEFix<CR>
+nmap <silent> <leader>aj :ALENext<cr>
+nmap <silent> <leader>ak :ALEPrevious<cr>
 
 let test#strategy = "vimux"
 
@@ -233,39 +235,35 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>t :Files<CR>
 nnoremap <leader>c :Commits<CR>
 nnoremap <leader>a :Commands<CR>
+nnoremap <leader>x :x<CR>
 
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-" YCM
-" " nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>y :YcmCompleter GoTo<CR>
-nnoremap <leader>yd :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>yi :YcmCompleter GoToInclude<CR>
-nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
-nnoremap <F6> :YcmDiags<CR>
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_always_populate_location_list = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_complete_in_comments = 1
-let g:ycm_confirm_extra_conf = 0
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <expr><TAB>
+ \ pumvisible() ? "\<C-n>" :
+ \ neosnippet#expandable_or_jumpable() ?
+ \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
-if !exists('g:ycm_semantic_triggers')
-    let g:ycm_semantic_triggers = {}
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
 endif
-let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
+" disable autocompletion, cause we use deoplete for completion
+let g:jedi#completions_enabled = 0
 
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
+" open the go-to function in split, not another buffer
+let g:jedi#use_splits_not_buffers = "right"
 
 " Return to last edit position when opening files (You want this!)
  autocmd BufReadPost *

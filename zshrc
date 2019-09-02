@@ -43,3 +43,4 @@ alias vim='nvim'
 export EDITOR='nvim'
 
 [ -f ~/.zshrc_local.zsh ] && source ~/.zshrc_local.zsh
+. /home/jgiret/anaconda3/etc/profile.d/conda.sh

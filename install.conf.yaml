@@ -5,11 +5,11 @@
 - clean: ['~']
 
 - link:
-    ~/.tmux.conf: .tmux/.tmux.conf 
+    ~/.tmux.conf: .tmux/.tmux.conf
     ~/.tmux.conf.local: tmux.conf.local
     ~/.vimrc: vimrc
     ~/.config/nvim/init.vim: vimrc
-    ~/.zshrc: zshrc 
+    ~/.zshrc: zshrc
     ~/.fzf.zsh: fzf.zsh
     ~/.antigen.zsh: antigen.zsh
 
